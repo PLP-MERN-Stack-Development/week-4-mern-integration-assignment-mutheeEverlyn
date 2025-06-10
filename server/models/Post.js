@@ -2,72 +2,59 @@
 
 const mongoose = require('mongoose');
 
-const PostSchema = new mongoose.Schema(
-  {
+const postSchema = new mongoose.Schema({
     title: {
-      type: String,
-      required: [true, 'Please provide a title'],
-      trim: true,
-      maxlength: [100, 'Title cannot be more than 100 characters'],
+        type: String,
+        required: [true, 'Please add a title'],
+        trim: true,
+        maxlength: [100, 'Title cannot be more than 100 characters']
     },
     content: {
-      type: String,
-      required: [true, 'Please provide content'],
+        type: String,
+        required: [true, 'Please add content']
     },
-    featuredImage: {
-      type: String,
-      default: 'default-post.jpg',
-    },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    excerpt: {
-      type: String,
-      maxlength: [200, 'Excerpt cannot be more than 200 characters'],
-    },
-    author: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
+    image: {
+        type: String,
+        default: 'no-image.jpg'
     },
     category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
     },
-    tags: [String],
-    isPublished: {
-      type: Boolean,
-      default: false,
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
-    viewCount: {
-      type: Number,
-      default: 0,
-    },
-    comments: [
-      {
+    comments: [{
         user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'User',
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
         },
-        content: {
-          type: String,
-          required: true,
+        text: {
+            type: String,
+            required: true
         },
         createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
-  },
-  { timestamps: true }
-);
+            type: Date,
+            default: Date.now
+        }
+    }]
+}, {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+});
+
+// Add virtual for comment count
+postSchema.virtual('commentCount').get(function() {
+    return this.comments.length;
+});
 
 // Create slug from title before saving
-PostSchema.pre('save', function (next) {
+postSchema.pre('save', function (next) {
   if (!this.isModified('title')) {
     return next();
   }
@@ -81,20 +68,20 @@ PostSchema.pre('save', function (next) {
 });
 
 // Virtual for post URL
-PostSchema.virtual('url').get(function () {
+postSchema.virtual('url').get(function () {
   return `/posts/${this.slug}`;
 });
 
 // Method to add a comment
-PostSchema.methods.addComment = function (userId, content) {
+postSchema.methods.addComment = function (userId, content) {
   this.comments.push({ user: userId, content });
   return this.save();
 };
 
 // Method to increment view count
-PostSchema.methods.incrementViewCount = function () {
+postSchema.methods.incrementViewCount = function () {
   this.viewCount += 1;
   return this.save();
 };
 
-module.exports = mongoose.model('Post', PostSchema); 
+module.exports = mongoose.model('Post', postSchema); 

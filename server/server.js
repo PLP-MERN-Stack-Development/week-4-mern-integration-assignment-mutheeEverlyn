@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const connectDB = require('./config/db');
 
 // Import routes
 const postRoutes = require('./routes/posts');
@@ -40,6 +41,16 @@ app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/auth', authRoutes);
 
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+  });
+}
+
 // Root route
 app.get('/', (req, res) => {
   res.send('MERN Blog API is running');
@@ -48,25 +59,28 @@ app.get('/', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(err.statusCode || 500).json({
+  res.status(500).json({
     success: false,
-    error: err.message || 'Server Error',
+    message: err.message || 'Something went wrong!'
   });
 });
 
 // Connect to MongoDB and start server
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
+const startServer = async () => {
+  try {
+    await connectDB();
     console.log('Connected to MongoDB');
+    
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
     });
-  })
-  .catch((err) => {
-    console.error('Failed to connect to MongoDB', err);
+  } catch (err) {
+    console.error('Failed to start server:', err);
     process.exit(1);
-  });
+  }
+};
+
+startServer();
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {

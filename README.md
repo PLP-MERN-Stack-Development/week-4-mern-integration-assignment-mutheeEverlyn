@@ -1,16 +1,199 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19730720&assignment_repo_type=AssignmentRepo)
-# MERN Stack Integration Assignment
+# Blog Application
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with user authentication, post management, and category organization.
 
-## Assignment Overview
+## Features
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+- User Authentication (Register, Login, Logout)
+- Create, Read, Update, and Delete (CRUD) blog posts
+- Category management
+- Responsive design with Tailwind CSS
+- Image upload support
+- Comment system
+- User profiles
+- Search functionality
+- Category-based post filtering
+
+## Tech Stack
+
+### Frontend
+- React.js
+- React Router for navigation
+- Tailwind CSS for styling
+- React Hot Toast for notifications
+- Axios for API requests
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT for authentication
+- Multer for file uploads
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
+
+### Backend Setup
+1. Clone the repository
+2. Navigate to the server directory:
+   ```bash
+   cd server
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Create a `.env` file in the server directory with the following variables:
+   ```
+   PORT=5000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   ```
+5. Start the server:
+   ```bash
+   npm start
+   ```
+
+### Frontend Setup
+1. Navigate to the client directory:
+   ```bash
+   cd client
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the client directory:
+   ```
+   VITE_API_URL=http://localhost:5000/api
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## API Documentation
+
+### Authentication Endpoints
+
+#### Register User
+- **POST** `/api/auth/register`
+- **Body:**
+  ```json
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123"
+  }
+  ```
+
+#### Login User
+- **POST** `/api/auth/login`
+- **Body:**
+  ```json
+  {
+    "email": "john@example.com",
+    "password": "password123"
+  }
+  ```
+
+### Post Endpoints
+
+#### Get All Posts
+- **GET** `/api/posts`
+- **Query Parameters:**
+  - `page`: Page number (default: 1)
+  - `limit`: Posts per page (default: 10)
+  - `category`: Filter by category
+  - `search`: Search in title and content
+
+#### Get Single Post
+- **GET** `/api/posts/:id`
+
+#### Create Post
+- **POST** `/api/posts`
+- **Body:**
+  ```json
+  {
+    "title": "Post Title",
+    "content": "Post Content",
+    "category": "category_id",
+    "image": "image_url"
+  }
+  ```
+
+#### Update Post
+- **PUT** `/api/posts/:id`
+- **Body:** Same as Create Post
+
+#### Delete Post
+- **DELETE** `/api/posts/:id`
+
+### Category Endpoints
+
+#### Get All Categories
+- **GET** `/api/categories`
+
+#### Create Category
+- **POST** `/api/categories`
+- **Body:**
+  ```json
+  {
+    "name": "Category Name"
+  }
+  ```
+
+## Features Implemented
+
+1. **User Authentication**
+   - Registration with email and password
+   - Login with JWT authentication
+   - Protected routes for authenticated users
+
+2. **Post Management**
+   - Create new blog posts with title, content, and image
+   - Edit existing posts
+   - Delete posts
+   - View all posts with pagination
+   - View individual post details
+
+3. **Category System**
+   - Create and manage categories
+   - Filter posts by category
+   - Category-based navigation
+
+4. **User Interface**
+   - Responsive design using Tailwind CSS
+   - Modern and clean UI
+   - Loading states and error handling
+   - Toast notifications for user feedback
+
+5. **Additional Features**
+   - Image upload support
+   - Search functionality
+   - Comment system
+   - User profiles
+
+## Screenshots
+
+[Add screenshots of your application here]
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Project Structure
 
