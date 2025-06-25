@@ -180,8 +180,10 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
    - User profiles
 
 ## Screenshots
+![blog screenshots](./images/blog.JPG)
+![blog screenshots](./images/footer.JPG)
+![blog screenshots](./images/login%20blog.JPG)
 
-[Add screenshots of your application here]
 
 ## Contributing
 
@@ -260,8 +262,3 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [React Documentation](https://react.dev/)
 - [Node.js Documentation](https://nodejs.org/en/docs/)
 - [Mongoose Documentation](https://mongoosejs.com/docs/) 
-
-
-[blog screenshots](./images/blog.JPG)
-[blog screenshots](./images/footer.JPG)
-[blog screenshots](./images/login%20blog.JPG)
