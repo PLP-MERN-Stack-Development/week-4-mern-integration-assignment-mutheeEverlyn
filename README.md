@@ -260,3 +260,8 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [React Documentation](https://react.dev/)
 - [Node.js Documentation](https://nodejs.org/en/docs/)
 - [Mongoose Documentation](https://mongoosejs.com/docs/) 
+
+
+[blog screenshots](./images/blog.JPG)
+[blog screenshots](./images/footer.JPG)
+[blog screenshots](./images/login%20blog.JPG)
