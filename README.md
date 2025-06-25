@@ -86,8 +86,8 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
 - **Body:**
   ```json
   {
-    "name": "John Doe",
-    "email": "john@example.com",
+    "name": "Evah mso",
+    "email": "evah@example.com",
     "password": "password123"
   }
   ```
@@ -97,7 +97,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
 - **Body:**
   ```json
   {
-    "email": "john@example.com",
+    "email": "evah@example.com",
     "password": "password123"
   }
   ```
@@ -223,37 +223,12 @@ mern-blog/
 └── README.md               # Project documentation
 ```
 
-## Getting Started
-
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
-
-## Files Included
-
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
-
 ## Requirements
 
 - Node.js (v18 or higher)
 - MongoDB (local installation or Atlas account)
 - npm or yarn
 - Git
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
 
 ## Resources
 
