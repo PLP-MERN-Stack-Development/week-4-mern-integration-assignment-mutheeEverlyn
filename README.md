@@ -46,7 +46,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 4. Create a `.env` file in the server directory with the following variables:
    ```
@@ -56,7 +56,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
    ```
 5. Start the server:
    ```bash
-   npm start
+   pnpm start
    ```
 
 ### Frontend Setup
@@ -66,7 +66,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 3. Create a `.env` file in the client directory:
    ```
@@ -74,7 +74,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application with
    ```
 4. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 ## API Documentation
